@@ -1,0 +1,217 @@
+[
+    {
+        "id": "65eb80579ec0c69a",
+        "type": "tab",
+        "label": "플로우 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "da26e7e4e6d1c5b0",
+        "type": "ui_button",
+        "z": "65eb80579ec0c69a",
+        "name": "",
+        "group": "12706bfba87a076a",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 690,
+        "y": 200,
+        "wires": [
+            [
+                "a990a0cea7a0cd3a",
+                "3c7a747de25da792",
+                "7001da6cf58d13f0",
+                "48ea39cccf8c73d6"
+            ]
+        ]
+    },
+    {
+        "id": "a990a0cea7a0cd3a",
+        "type": "ui_audio",
+        "z": "65eb80579ec0c69a",
+        "name": "",
+        "group": "12706bfba87a076a",
+        "voice": "",
+        "always": "",
+        "x": 960,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "3c7a747de25da792",
+        "type": "ui_text",
+        "z": "65eb80579ec0c69a",
+        "group": "12706bfba87a076a",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 950,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "7001da6cf58d13f0",
+        "type": "debug",
+        "z": "65eb80579ec0c69a",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "48ea39cccf8c73d6",
+        "type": "ui_toast",
+        "z": "65eb80579ec0c69a",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 990,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "fbb5e72f2d936ec6",
+        "type": "inject",
+        "z": "65eb80579ec0c69a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "300",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 410,
+        "y": 520,
+        "wires": [
+            [
+                "d59029b4c4b1a32e"
+            ]
+        ]
+    },
+    {
+        "id": "d59029b4c4b1a32e",
+        "type": "http request",
+        "z": "65eb80579ec0c69a",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.csv",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 770,
+        "y": 520,
+        "wires": [
+            [
+                "d08e8d53e7f5da3f"
+            ]
+        ]
+    },
+    {
+        "id": "d08e8d53e7f5da3f",
+        "type": "csv",
+        "z": "65eb80579ec0c69a",
+        "name": "",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 990,
+        "y": 520,
+        "wires": [
+            [
+                "0227dc55da795733"
+            ]
+        ]
+    },
+    {
+        "id": "0227dc55da795733",
+        "type": "debug",
+        "z": "65eb80579ec0c69a",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1200,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "12706bfba87a076a",
+        "type": "ui_group",
+        "name": "menu01",
+        "tab": "4eafe58984c129c8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4eafe58984c129c8",
+        "type": "ui_tab",
+        "name": "myTest01",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
